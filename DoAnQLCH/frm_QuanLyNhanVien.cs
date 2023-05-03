@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DoAnQLCH
 {
-    public partial class frm_QLNV : Form
+    public partial class frm_QuanLyNhanVien : Form
     {
-        public frm_QLNV()
+        public frm_QuanLyNhanVien()
         {
             InitializeComponent();
         }

@@ -70,11 +70,11 @@
     <Compile Include="frm_PhieuXuat.Designer.cs">
       <DependentUpon>frm_PhieuXuat.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_QLNV.cs">
+    <Compile Include="frm_QuanLy.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_QLNV.Designer.cs">
-      <DependentUpon>frm_QLNV.cs</DependentUpon>
+    <Compile Include="frm_QuanLy.Designer.cs">
+      <DependentUpon>frm_QuanLy.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_ThemCuaHang.cs">
       <SubType>Form</SubType>
@@ -102,6 +102,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_QuanLy.resx">
+      <DependentUpon>frm_QuanLy.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_ThemCuaHang.resx">
       <DependentUpon>frm_ThemCuaHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -129,6 +132,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{1f33d808-7833-4cfd-9f4e-4ada9427789e}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DTO\DTO.csproj">
+      <Project>{56ca0682-19bb-4cfd-8356-babf3c468f2b}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

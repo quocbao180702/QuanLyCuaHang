@@ -1,6 +1,6 @@
 ﻿namespace DoAnQLCH
 {
-    partial class frm_QLNV
+    partial class frm_QuanLyNhanVien
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frm_QLNV";
+            this.Text = "frm_QuanLyNhanVien";
         }
 
         #endregion

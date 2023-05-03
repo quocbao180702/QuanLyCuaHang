@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BangChamCong_DTO.cs" />
     <Compile Include="ChucVu_DTO.cs" />
+    <Compile Include="CuaHang_DTO.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
