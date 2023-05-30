@@ -16,7 +16,7 @@ namespace DoAnQLCH
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_QuanLy());
+            Application.Run(new frm_DangNhap());
         }
     }
 }

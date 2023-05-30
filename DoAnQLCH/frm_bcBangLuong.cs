@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,12 @@ namespace DoAnQLCH
         public frm_bcBangLuong()
         {
             InitializeComponent();
+        }
+
+        private void frm_bcBangLuong_Load(object sender, EventArgs e)
+        {
+            bangLuongDTOBindingSource.DataSource = BangLuong_BUS.LayBangLuong();
+            this.reportViewer1.RefreshReport();
         }
     }
 }

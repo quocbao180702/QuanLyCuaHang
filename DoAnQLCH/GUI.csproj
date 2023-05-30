@@ -33,8 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1576.0\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms">
+      <HintPath>..\..\..\CODE\Visual studio\DangQuocBao_Buoi6\Buoi6\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1537.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,29 +65,89 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmHoaDon_Ban.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmHoaDon_Ban.Designer.cs">
+      <DependentUpon>frmHoaDon_Ban.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_baocao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_baocao.Designer.cs">
+      <DependentUpon>frm_baocao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_bcBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_bcBan.Designer.cs">
+      <DependentUpon>frm_bcBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_bcBangLuong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_bcBangLuong.Designer.cs">
       <DependentUpon>frm_bcBangLuong.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_NoiQuy.cs">
+    <Compile Include="frm_bcNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_NoiQuy.Designer.cs">
-      <DependentUpon>frm_NoiQuy.cs</DependentUpon>
+    <Compile Include="frm_bcNhap.Designer.cs">
+      <DependentUpon>frm_bcNhap.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_PhieuNhap.cs">
+    <Compile Include="frm_ChucVu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_PhieuNhap.Designer.cs">
-      <DependentUpon>frm_PhieuNhap.cs</DependentUpon>
+    <Compile Include="frm_ChucVu.Designer.cs">
+      <DependentUpon>frm_ChucVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_PhieuXuat.cs">
+    <Compile Include="frm_BangLuong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_PhieuXuat.Designer.cs">
-      <DependentUpon>frm_PhieuXuat.cs</DependentUpon>
+    <Compile Include="frm_BangLuong.Designer.cs">
+      <DependentUpon>frm_BangLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DangNhap.Designer.cs">
+      <DependentUpon>frm_DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_DoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DoiMatKhau.Designer.cs">
+      <DependentUpon>frm_DoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_HangHoa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_HangHoa.Designer.cs">
+      <DependentUpon>frm_HangHoa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_HoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_HoaDon.Designer.cs">
+      <DependentUpon>frm_HoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_KhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_KhachHang.Designer.cs">
+      <DependentUpon>frm_KhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_LapPhieu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_LapPhieu.Designer.cs">
+      <DependentUpon>frm_LapPhieu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_NhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_NhaCungCap.Designer.cs">
+      <DependentUpon>frm_NhaCungCap.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_QuanLy.cs">
       <SubType>Form</SubType>
@@ -76,17 +155,23 @@
     <Compile Include="frm_QuanLy.Designer.cs">
       <DependentUpon>frm_QuanLy.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ThemCuaHang.cs">
+    <Compile Include="frm_CuaHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_ThemCuaHang.Designer.cs">
-      <DependentUpon>frm_ThemCuaHang.cs</DependentUpon>
+    <Compile Include="frm_CuaHang.Designer.cs">
+      <DependentUpon>frm_CuaHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ThemLoai.cs">
+    <Compile Include="frm_Loai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_ThemLoai.Designer.cs">
-      <DependentUpon>frm_ThemLoai.cs</DependentUpon>
+    <Compile Include="frm_Loai.Designer.cs">
+      <DependentUpon>frm_Loai.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_TaoTaiKhoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_TaoTaiKhoan.Designer.cs">
+      <DependentUpon>frm_TaoTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_ThongTinCaNhan.cs">
       <SubType>Form</SubType>
@@ -102,14 +187,71 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="Ban.rdlc" />
+    <EmbeddedResource Include="baocao.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="bc_BangLuong.rdlc" />
+    <EmbeddedResource Include="frmHoaDon_Ban.resx">
+      <DependentUpon>frmHoaDon_Ban.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_BangLuong.resx">
+      <DependentUpon>frm_BangLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_baocao.resx">
+      <DependentUpon>frm_baocao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_bcBan.resx">
+      <DependentUpon>frm_bcBan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_bcBangLuong.resx">
+      <DependentUpon>frm_bcBangLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_bcNhap.resx">
+      <DependentUpon>frm_bcNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ChucVu.resx">
+      <DependentUpon>frm_ChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_DangNhap.resx">
+      <DependentUpon>frm_DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_DoiMatKhau.resx">
+      <DependentUpon>frm_DoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_HangHoa.resx">
+      <DependentUpon>frm_HangHoa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_HoaDon.resx">
+      <DependentUpon>frm_HoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_KhachHang.resx">
+      <DependentUpon>frm_KhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_LapPhieu.resx">
+      <DependentUpon>frm_LapPhieu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_NhaCungCap.resx">
+      <DependentUpon>frm_NhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_QuanLy.resx">
       <DependentUpon>frm_QuanLy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_ThemCuaHang.resx">
-      <DependentUpon>frm_ThemCuaHang.cs</DependentUpon>
+    <EmbeddedResource Include="frm_CuaHang.resx">
+      <DependentUpon>frm_CuaHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_ThemLoai.resx">
-      <DependentUpon>frm_ThemLoai.cs</DependentUpon>
+    <EmbeddedResource Include="frm_Loai.resx">
+      <DependentUpon>frm_Loai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_TaoTaiKhoan.resx">
+      <DependentUpon>frm_TaoTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongTinCaNhan.resx">
+      <DependentUpon>frm_ThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_XemDanhSach.resx">
+      <DependentUpon>frm_XemDanhSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -119,7 +261,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Nhap.rdlc" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BUS.Ban_BUS.datasource" />
+    <None Include="Properties\DataSources\BUS.Nhap_BUS.datasource" />
+    <None Include="Properties\DataSources\DTO.BangLuong_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.Ban_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.BaoCao_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.ChucVu_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.CuaHang_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.NhanVien_DTO.datasource" />
+    <None Include="Properties\DataSources\DTO.Nhap_DTO.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,6 +296,24 @@
       <Project>{56ca0682-19bb-4cfd-8356-babf3c468f2b}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CuaHangTon.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

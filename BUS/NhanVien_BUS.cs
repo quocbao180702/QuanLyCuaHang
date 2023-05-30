@@ -35,7 +35,6 @@ namespace BUS
                                 DtNgaySinh = nv.DtNgaySinh,
                                 SSdt = nv.SSdt,
                                 SEmail = nv.SEmail,
-                                FLuongcb = nv.FLuongcb,
                                 SDiaChi = nv.SDiaChi,
                                 STinh = nv.STinh,
 
@@ -53,6 +52,122 @@ namespace BUS
                 return new List<object>();
             }
         }
+        public static List<object> TimHoTenNhanVien(string ho, string ten)
+        {
+
+            List<NhanVien_DTO> lstNhanVien = NhanVien_DAO.TimNhanVienTheoHoTen(ho,ten);
+            List<ChucVu_DTO> lstChucVu = ChucVu_DAO.LayChucVu();
+            List<CuaHang_DTO> lstCuaHang = CuaHang_DAO.LayCuaHang();
+
+            if (lstNhanVien != null && lstChucVu != null && lstCuaHang != null)
+            {
+                var query = from nv in lstNhanVien
+                            join cv in lstChucVu on nv.SMaCV equals cv.SMaCV
+                            join ch in lstCuaHang on nv.SMaCH equals ch.SMaCH
+                            select new
+                            {
+                                SMaNV = nv.SMaNV,
+                                SHoLot = nv.SHoLot,
+                                STen = nv.STen,
+                                SPhai = nv.SPhai,
+                                DtNgaySinh = nv.DtNgaySinh,
+                                SSdt = nv.SSdt,
+                                SEmail = nv.SEmail,
+                                SDiaChi = nv.SDiaChi,
+                                STinh = nv.STinh,
+
+                                SMaCV = nv.SMaCV,
+                                STenCV = cv.STenCV,
+
+                                SMaCH = nv.SMaCH,
+                                STenCH = ch.STenCH,
+                            };
+                return query.ToList<object>();
+            }
+            else
+            {
+                // Handle the case when one or more of the collections is null
+                return new List<object>();
+            }
+        }
+
+        public static List<object> TimTenNhanVien(string ten)
+        {
+
+            List<NhanVien_DTO> lstNhanVien = NhanVien_DAO.TimNhanVienTheoTen(ten);
+            List<ChucVu_DTO> lstChucVu = ChucVu_DAO.LayChucVu();
+            List<CuaHang_DTO> lstCuaHang = CuaHang_DAO.LayCuaHang();
+
+            if (lstNhanVien != null && lstChucVu != null && lstCuaHang != null)
+            {
+                var query = from nv in lstNhanVien
+                            join cv in lstChucVu on nv.SMaCV equals cv.SMaCV
+                            join ch in lstCuaHang on nv.SMaCH equals ch.SMaCH
+                            select new
+                            {
+                                SMaNV = nv.SMaNV,
+                                SHoLot = nv.SHoLot,
+                                STen = nv.STen,
+                                SPhai = nv.SPhai,
+                                DtNgaySinh = nv.DtNgaySinh,
+                                SSdt = nv.SSdt,
+                                SEmail = nv.SEmail,
+                                SDiaChi = nv.SDiaChi,
+                                STinh = nv.STinh,
+
+                                SMaCV = nv.SMaCV,
+                                STenCV = cv.STenCV,
+
+                                SMaCH = nv.SMaCH,
+                                STenCH = ch.STenCH,
+                            };
+                return query.ToList<object>();
+            }
+            else
+            {
+                // Handle the case when one or more of the collections is null
+                return new List<object>();
+            }
+        }
+        public static List<object> TimHoNhanVien(string ho)
+        {
+            List<NhanVien_DTO> lstNhanVien = NhanVien_DAO.TimNhanVienTheoHo(ho);
+            List<ChucVu_DTO> lstChucVu = ChucVu_DAO.LayChucVu();
+            List<CuaHang_DTO> lstCuaHang = CuaHang_DAO.LayCuaHang();
+
+            if (lstNhanVien != null && lstChucVu != null && lstCuaHang != null)
+            {
+                var query = from nv in lstNhanVien
+                            join cv in lstChucVu on nv.SMaCV equals cv.SMaCV
+                            join ch in lstCuaHang on nv.SMaCH equals ch.SMaCH
+                            select new
+                            {
+                                SMaNV = nv.SMaNV,
+                                SHoLot = nv.SHoLot,
+                                STen = nv.STen,
+                                SPhai = nv.SPhai,
+                                DtNgaySinh = nv.DtNgaySinh,
+                                SSdt = nv.SSdt,
+                                SEmail = nv.SEmail,
+                                SDiaChi = nv.SDiaChi,
+                                STinh = nv.STinh,
+
+                                SMaCV = nv.SMaCV,
+                                STenCV = cv.STenCV,
+
+                                SMaCH = nv.SMaCH,
+                                STenCH = ch.STenCH,
+                            };
+                return query.ToList<object>();
+            }
+            else
+            {
+                // Handle the case when one or more of the collections is null
+                return new List<object>();
+            }
+        }
+
+
         public static bool ThemNhanVien(NhanVien_DTO nv)
         {
             return NhanVien_DAO.ThemNhanVien(nv);
@@ -60,6 +175,11 @@ namespace BUS
         public static NhanVien_DTO TimNhanVienTheoMa(string ma)
         {
             return NhanVien_DAO.TimNhanVienTheoMa(ma);
+        }
+
+        public static List<NhanVien_DTO> TimNhanVienTheoHoTen(string ho, string ten)
+        {
+            return NhanVien_DAO.TimNhanVienTheoHoTen(ho,ten);
         }
 
         public static bool SuaNhanVien(NhanVien_DTO nv)
@@ -74,9 +194,17 @@ namespace BUS
         {
             return NhanVien_DAO.LayDSNhanVienTheoMaChucVu(ma);
         }
-        public static List<NhanVien_DTO> TimNhanVienTheoTen(string ten)
+        /*public static List<NhanVien_DTO> TimNhanVienTheoTen(string ten)
         {
             return NhanVien_DAO.TimNhanVienTheoTen(ten);
+        }*/
+        /*public static List<NhanVien_DTO> TimNhanVienTheoHo(string ho)
+        {
+            return NhanVien_DAO.TimNhanVienTheoHo(ho);
+        }*/
+        public static List<NhanVien_DTO> ThongTinNhanVien(string ma)
+        {
+            return NhanVien_DAO.ThongTinCaNhan(ma);
         }
 
     }

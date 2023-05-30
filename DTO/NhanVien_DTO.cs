@@ -63,13 +63,6 @@ namespace DTO
                 set { sEmail = value; }
             }
 
-            private float fLuongcb;
-
-            public float FLuongcb
-            {
-                get { return fLuongcb; }
-                set { fLuongcb = value; }
-            }
 
             public string sDiaChi;
 

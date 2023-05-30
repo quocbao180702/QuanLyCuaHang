@@ -22,10 +22,10 @@ namespace DTO
             set { sTenCV = value; }
         }
 
-        private string fHSPhuCap;
+        private float fHSPhuCap;
 
 
-        public string FHSPhuCap
+        public float FHSPhuCap
         {
             get { return fHSPhuCap; }
             set { fHSPhuCap = value; }

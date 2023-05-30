@@ -9,6 +9,8 @@ namespace DTO
     public class CuaHang_DTO
     {
         private string sMaCH;
+
+
         public string SMaCH
         {
             get { return sMaCH; }
@@ -29,6 +31,11 @@ namespace DTO
         {
             get { return sDiaChi; }
             set { sDiaChi = value; }
+        }
+
+        public static implicit operator CuaHang_DTO(ChucVu_DTO v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

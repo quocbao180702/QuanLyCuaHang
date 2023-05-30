@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -32,13 +33,44 @@ namespace DoAnQLCH
             dgvNhanVien.DataSource = lstNhanVien;*/
             List<object> lst = NhanVien_BUS.NhanVienWithChucVuWithCuaHang();
             dgvNhanVien.DataSource = lst;
+            
+            dgvNhanVien.Columns["SMaNV"].HeaderText = "Mã Nhân Viên";
+            dgvNhanVien.Columns["SHoLot"].HeaderText = "Họ Lót";
+            dgvNhanVien.Columns["STen"].HeaderText = "Tên NV";
+            dgvNhanVien.Columns["SPhai"].HeaderText = "Giới Tính";
+            dgvNhanVien.Columns["DtNgaySinh"].HeaderText = "Ngày Sinh";
+            dgvNhanVien.Columns["SSdt"].HeaderText = "SDT";
+            dgvNhanVien.Columns["SEmail"].HeaderText = "Email";
+            dgvNhanVien.Columns["SDiaChi"].HeaderText = "Địa Chỉ";
+            dgvNhanVien.Columns["STinh"].HeaderText = "Tỉnh";
+            dgvNhanVien.Columns["SMaCV"].HeaderText = "Mã Chức Vụ";
+            dgvNhanVien.Columns["STenCV"].HeaderText = "Tên Chức Vụ";
+            dgvNhanVien.Columns["SMaCH"].HeaderText = "Mã Cửa Hàng";
+            dgvNhanVien.Columns["STenCH"].HeaderText = "Tên Cửa Hàng";
+
+            dgvNhanVien.Columns["SMaNV"].Width = 80;
+            dgvNhanVien.Columns["SHoLot"].Width = 100;
+            dgvNhanVien.Columns["STen"].Width = 80;
+            dgvNhanVien.Columns["SPhai"].Width = 80;
+            dgvNhanVien.Columns["DtNgaySinh"].Width = 100;
+            dgvNhanVien.Columns["SSdt"].Width = 80;
+            dgvNhanVien.Columns["SEmail"].Width = 120;
+            dgvNhanVien.Columns["SDiaChi"].Width = 140;
+            dgvNhanVien.Columns["STinh"].Width = 80;
+            dgvNhanVien.Columns["SMaCV"].Width = 80;
+            dgvNhanVien.Columns["STenCV"].Width = 100;
+            dgvNhanVien.Columns["SMaCH"].Width = 80;
+            dgvNhanVien.Columns["STenCH"].Width = 120;
+
         }
         public void HienThiChucVu()
         {
             List<ChucVu_DTO> lstChucVu = ChucVu_BUS.LayChucVu();
+
             cmbChucVu.DataSource = lstChucVu;
             cmbChucVu.DisplayMember = "STenCV";
             cmbChucVu.ValueMember = "SMaCV";
+
             cmbLocChucVu.DataSource = lstChucVu;
             cmbLocChucVu.DisplayMember = "STenCV";
             cmbLocChucVu.ValueMember = "SMaCV";
@@ -49,6 +81,7 @@ namespace DoAnQLCH
             cmbCuaHang.DataSource = lstCuaHang;
             cmbCuaHang.DisplayMember = "STenCH";
             cmbCuaHang.ValueMember = "SMaCH";
+
             cmbLocCuaHang.DataSource = lstCuaHang;
             cmbLocCuaHang.DisplayMember = "STenCH";
             cmbLocCuaHang.ValueMember = "SMaCH";
@@ -56,8 +89,7 @@ namespace DoAnQLCH
 
         private void dgvNhanVien_Click(object sender, EventArgs e)
         {
-            DataGridViewRow r = new DataGridViewRow();
-            r = dgvNhanVien.SelectedRows[0];
+            DataGridViewRow r = dgvNhanVien.SelectedRows[0];
             txtMa.Text = r.Cells["SMaNV"].Value.ToString();
             txtHo.Text = r.Cells["SHoLot"].Value.ToString();
             txtTen.Text = r.Cells["STen"].Value.ToString();
@@ -72,11 +104,10 @@ namespace DoAnQLCH
             dtpNgaySinh.Text = r.Cells["DtNgaySinh"].Value.ToString();
             txtSDT.Text = r.Cells["SSdt"].Value.ToString();
             txtEmail.Text = r.Cells["SEmail"].Value.ToString();
-            txtLuongCoBan.Text = r.Cells["FLuongcb"].Value.ToString();
             txtDiaChi.Text = r.Cells["SDiaChi"].Value.ToString();
             cmbTinh.Text = r.Cells["STinh"].Value.ToString();
-            cmbChucVu.Text = r.Cells["STenCV"].Value.ToString();
-            cmbCuaHang.Text = r.Cells["STenCH"].Value.ToString();
+            cmbChucVu.SelectedValue = r.Cells["SMaCV"].Value.ToString();
+            cmbCuaHang.SelectedValue = r.Cells["SMaCH"].Value.ToString();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -114,7 +145,6 @@ namespace DoAnQLCH
             nv.DtNgaySinh = DateTime.Parse(dtpNgaySinh.Text);
             nv.SSdt = txtSDT.Text;
             nv.SEmail = txtEmail.Text;
-            nv.FLuongcb = float.Parse(txtLuongCoBan.Text);
             nv.SDiaChi = txtDiaChi.Text;
             nv.STinh = cmbTinh.Text;
             nv.SMaCV = cmbChucVu.SelectedValue.ToString();
@@ -131,41 +161,42 @@ namespace DoAnQLCH
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            NhanVien_DTO nv = new NhanVien_DTO();
             DialogResult traloisua;
             traloisua = MessageBox.Show("Bạn có muốn sửa nhân viên không không?", "Thông báo",
             MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            if (traloisua == DialogResult.OK)
+            if (traloisua == DialogResult.OK) 
+            { 
+                NhanVien_DTO nv = new NhanVien_DTO();
                 nv.SMaNV = txtMa.Text;
-            nv.SHoLot = txtHo.Text;
-            nv.STen = txtTen.Text;
-            if (radNam.Checked == true)
-            {
-                nv.SPhai = "Nam";
-            }
-            else
-            {
-                nv.SPhai = "Nữ";
-            }
-            nv.DtNgaySinh = DateTime.Parse(dtpNgaySinh.Text);
-            nv.SSdt = txtSDT.Text;
-            nv.SEmail = txtEmail.Text;
-            nv.FLuongcb = float.Parse(txtLuongCoBan.Text);
-            nv.SDiaChi = txtDiaChi.Text;
-            nv.STinh = cmbTinh.Text;
-            nv.SMaCV = cmbChucVu.SelectedValue.ToString();
-            nv.SMaCH = cmbCuaHang.SelectedValue.ToString();
+                nv.SHoLot = txtHo.Text;
+                nv.STen = txtTen.Text;
+                if (radNam.Checked == true)
+                {
+                    nv.SPhai = "Nam";
+                }
+                else
+                {
+                    nv.SPhai = "Nữ";
+                }
+                nv.DtNgaySinh = DateTime.Parse(dtpNgaySinh.Text);
+                nv.SSdt = txtSDT.Text;
+                nv.SEmail = txtEmail.Text;
+                nv.SDiaChi = txtDiaChi.Text;
+                nv.STinh = cmbTinh.Text;
+                nv.SMaCV = cmbChucVu.SelectedValue.ToString();
+                nv.SMaCH = cmbCuaHang.SelectedValue.ToString();
 
-            if (NhanVien_BUS.SuaNhanVien(nv) == true)
-            {
-                MessageBox.Show("Đã sữa thành công");
+                if (NhanVien_BUS.SuaNhanVien(nv) == true)
+                {
+                    MessageBox.Show("Đã sữa thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Sửa Không Thành Công");
+                    return;
+                }
+                HienThiDSDatagridview();
             }
-            else
-            {
-                MessageBox.Show("Sửa Không Thành Công");
-                return;
-            }
-            HienThiDSDatagridview();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -195,11 +226,10 @@ namespace DoAnQLCH
                 this.dtpNgaySinh.ResetText();
                 this.txtSDT.ResetText();
                 this.txtEmail.ResetText();
-                this.txtLuongCoBan.ResetText();
                 this.txtDiaChi.ResetText();
                 this.cmbTinh.ResetText();
-                this.cmbChucVu.ResetText();
-                this.cmbCuaHang.ResetText();
+                this.txtTimHoLotNV.ResetText();
+                HienThiDSDatagridview();
             }
         }
 
@@ -212,14 +242,53 @@ namespace DoAnQLCH
 
         private void btnTim_Click(object sender, EventArgs e)
         {
-            string ten = txtTimTenNV.Text;
-            List<NhanVien_DTO> lstnv = NhanVien_BUS.TimNhanVienTheoTen(ten);
-            if (lstnv == null)
+            if(txtTimHoLotNV.Text != "" && txtTimTenNV.Text != "")
             {
-                MessageBox.Show("Không tìm thấy!");
-                return;
+                String ho = txtTimHoLotNV.Text;
+                String ten = txtTimTenNV.Text;
+                List<object> lst = NhanVien_BUS.TimHoTenNhanVien(ho,ten);
+                dgvNhanVien.DataSource = lst;
             }
-            dgvNhanVien.DataSource = lstnv;
+            else if(txtTimHoLotNV.Text == "" && txtTimTenNV.Text != "")
+            {
+                String ten = txtTimTenNV.Text;
+                List<object> lst = NhanVien_BUS.TimTenNhanVien(ten);
+                dgvNhanVien.DataSource = lst;
+            }
+            else if(txtTimHoLotNV.Text != "" && txtTimTenNV.Text == "")
+            {
+                String ho =txtTimHoLotNV.Text;
+                List<object> lst = NhanVien_BUS.TimHoNhanVien(ho);
+                dgvNhanVien.DataSource = lst;
+            }
+            else
+            {
+                MessageBox.Show("Vui Lòng Nhập Thông Tin Cần Tìm");
+            }
+        }
+
+        private void cmbLocChucVu_Click(object sender, EventArgs e)
+        {
+            string macv = cmbChucVu.SelectedValue.ToString();
+            List<NhanVien_DTO> lst = NhanVien_BUS.TimNhanVienTheoMaChucVu(macv);
+            dgvNhanVien.DataSource = lst;
+        }
+
+        private void btnThemChucVu_Click(object sender, EventArgs e)
+        {
+            frm_ChucVu fchuvu = new frm_ChucVu();
+            fchuvu.ShowDialog();
+        }
+
+        private void btnThemCuaHang_Click(object sender, EventArgs e)
+        {
+            frm_CuaHang fcuahang = new frm_CuaHang();
+            fcuahang.ShowDialog();
+        }
+
+        private void btnRefesh_Click(object sender, EventArgs e)
+        {
+            frm_QuanLy_Load(sender, e);
         }
     }
 }
