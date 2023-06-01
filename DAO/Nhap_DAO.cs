@@ -164,7 +164,7 @@ namespace DAO
 
         public static List<Nhap_DTO> TimMaNV(string manv)
         {
-            string str = string.Format(@"select * from nhap where manv = '{0}'", manv);
+            string str = string.Format(@"select * from hoadon_nhap where hoadon_nhap.manv  = '{0}'", manv);
             conn = DataProvider.MoKetNoi();
             DataTable dt = DataProvider.TruyVanLayDuLieu(str, conn);
             if (dt.Rows.Count == 0)
@@ -177,13 +177,9 @@ namespace DAO
                 Nhap_DTO Nhap = new Nhap_DTO();
                 Nhap.SMaHDN = dt.Rows[i]["mahdnhap"].ToString();
                 Nhap.SMaNV = dt.Rows[i]["manv"].ToString();
-                Nhap.SMaHH = dt.Rows[i]["mahh"].ToString();
                 Nhap.SMaNCC = dt.Rows[i]["mancc"].ToString();
-                Nhap.SMaCH = dt.Rows[i]["mach"].ToString();
-                Nhap.ISoLuong = int.Parse(dt.Rows[i]["soluong"].ToString());
-                Nhap.FDonGia = float.Parse(dt.Rows[i]["dongia"].ToString());
                 Nhap.DTongTienNhap = Double.Parse(dt.Rows[i]["tongtiennhap"].ToString());
-                Nhap.SNgayNhap = DateTime.Parse(dt.Rows[i]["ngaynhap"].ToString());
+                Nhap.SNgayNhap = DateTime.Parse(dt.Rows[i]["ngayban"].ToString());
                 lst.Add(Nhap);
             }
             DataProvider.DongKetNoi(conn);
@@ -192,7 +188,7 @@ namespace DAO
 
         public static List<Nhap_DTO> TimMaNCC(string mancc)
         {
-            string str = string.Format(@"select * from nhap where mancc = '{0}'", mancc);
+            string str = string.Format(@"select * from hoadon_nhap where hoadon_nhap.mancc = '{0}'", mancc);
             conn = DataProvider.MoKetNoi();
             DataTable dt = DataProvider.TruyVanLayDuLieu(str, conn);
             if (dt.Rows.Count == 0)
@@ -205,13 +201,9 @@ namespace DAO
                 Nhap_DTO Nhap = new Nhap_DTO();
                 Nhap.SMaHDN = dt.Rows[i]["mahdnhap"].ToString();
                 Nhap.SMaNV = dt.Rows[i]["manv"].ToString();
-                Nhap.SMaHH = dt.Rows[i]["mahh"].ToString();
                 Nhap.SMaNCC = dt.Rows[i]["mancc"].ToString();
-                Nhap.SMaCH = dt.Rows[i]["mach"].ToString();
-                Nhap.ISoLuong = int.Parse(dt.Rows[i]["soluong"].ToString());
-                Nhap.FDonGia = float.Parse(dt.Rows[i]["dongia"].ToString());
                 Nhap.DTongTienNhap = Double.Parse(dt.Rows[i]["tongtiennhap"].ToString());
-                Nhap.SNgayNhap = DateTime.Parse(dt.Rows[i]["ngaynhap"].ToString());
+                Nhap.SNgayNhap = DateTime.Parse(dt.Rows[i]["ngayban"].ToString());
                 lst.Add(Nhap);
             }
             DataProvider.DongKetNoi(conn);

@@ -317,7 +317,10 @@ namespace DoAnQLCH
 
         private void btnQuayLaiX_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frm_ThongTinCaNhan fc = new frm_ThongTinCaNhan();
+            fc.Show();
+            this.Close();
         }
 
         private void btnRefeshX_Click(object sender, EventArgs e)
@@ -343,19 +346,12 @@ namespace DoAnQLCH
             if (txtMaNVN_Tim.Text != "")
             {
                 String ma = txtMaNVN_Tim.Text;
-                List<Nhap_DTO> lst = Nhap_BUS.TimMaNV(ma);
-                dgvNhap.DataSource = lst;
-            }
-            else if(txtMaNCC_Tim.Text != "")
-            {
-                string mancc = txtMaNCC_Tim.Text;
-                List<Nhap_DTO> lst = Nhap_BUS.TimMaNCC(mancc);
+                List<Nhap_DTO> lst = Nhap_BUS.LayDSHDN(ma);
                 dgvNhap.DataSource = lst;
             }
             else
             {
-                MessageBox.Show("Bạn chỉ được phép tìm Mã Nhân Viên hoặc Mã NCC");
-                txtMaNCC_Tim.ResetText();
+                MessageBox.Show("Bạn được phép tìm Mã Hóa Đơn");
                 txtMaNVN_Tim.ResetText();
             }
         }
@@ -411,6 +407,21 @@ namespace DoAnQLCH
         {
             frm_KhachHang fkh = new frm_KhachHang();
             fkh.Show();
+        }
+
+        private void btnTimX_Click(object sender, EventArgs e)
+        {
+            if (txtTimHDB.Text != "")
+            {
+                String ma = txtTimHDB.Text;
+                List<Ban_DTO> lst = Ban_BUS.LayDSBan_TheoMa(ma);
+                dgvPhieuXuat.DataSource = lst;
+            }
+            else
+            {
+                MessageBox.Show("Bạn được phép tìm Mã Hóa Đơn");
+                txtMaNVN_Tim.ResetText();
+            }
         }
     }
 }

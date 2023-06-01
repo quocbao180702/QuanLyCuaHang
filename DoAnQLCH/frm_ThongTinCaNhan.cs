@@ -168,7 +168,6 @@ namespace DoAnQLCH
         frm_LapPhieu fphieu;
         frm_Loai floai;
         frm_NhaCungCap fncc;
-        frm_XemDanhSach fds;
         frm_QuanLy fquanly;
         frm_DangNhap fdangnhap;
         frm_DoiMatKhau fdmk;
@@ -219,8 +218,7 @@ namespace DoAnQLCH
 
         private void MenuItemXemDS_Click(object sender, EventArgs e)
         {
-            fds = new frm_XemDanhSach();
-            fds.Show();
+           
         }
 
         private void MenuItemDangNhap_Click(object sender, EventArgs e)
